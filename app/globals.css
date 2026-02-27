@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+/* Prevent Lenis smooth scroll from clipping header/footer at scroll extremes */
 html,
 body {
     overscroll-behavior: none;
@@ -9,29 +10,11 @@ body {
 
 @custom-variant dark (&:is(.dark *));
 
-/* ============================================================
-   EASEMED — DESIGN SYSTEM
-   Aesthetic: Deep Navy Command Center
-   The visual authority of a surgical instrument.
-   Cold steel field. Crisp white cards. Single coral heat point.
-
-   Palette:
-     --em-navy-deep   #0d1f3c   Page field. Institutional gravity.
-     --em-navy-mid    #1f3a61   Primary chrome. Authority.
-     --em-navy-steel  #2e5080   Secondary. Depth.
-     --em-steel-blue  #496c83   Supporting. Mid-tone.
-     --em-steel-light #7999b9   Captions. Decorative.
-     --em-teal-mist   #b2d6e0   Surface tints. Muted fills.
-     --em-coral       #ffa07a   CTA ONLY. Single heat point.
-     --em-coral-deep  #e8855e   CTA hover.
-     --em-white       #ffffff   Cards. Elevated surfaces.
-     --em-off-white   #f4f7fb   Section alternation.
-   ============================================================ */
-
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
 
+    /* --- Fonts Configuration --- */
     --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
     --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
     --font-mono: var(--font-mono);
@@ -77,712 +60,101 @@ body {
     --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* ============================================================
-   :root — LIGHT MODE
-   Clean institutional field. White cards on off-white.
-   Navy primary chrome. Coral CTA only.
-   ============================================================ */
 :root {
-    --radius: 0.75rem;
+    --radius: 0.75rem; /* Slightly rounder, more modern */
 
-    /* ── Page field: cool off-white with faint blue undertone ── */
-    --background: oklch(0.971 0.007 240); /* #f4f7fb */
-    --foreground: oklch(0.22 0.065 243.6); /* #1a2f4f near-navy */
+    /* Background: Cool Gray 50 (Not White) */
+    --background: oklch(0.98 0.01 240);
 
-    /* ── Cards: pure white — elevated off the field ── */
+    /* Foreground: Cool Gray 900 (Sharp Text) */
+    --foreground: oklch(0.2 0.04 240);
+
+    /* Cards: Pure White (Popping off the gray background) */
     --card: oklch(1 0 0);
-    --card-foreground: oklch(0.22 0.065 243.6);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.22 0.065 243.6);
+    --card-foreground: oklch(0.2 0.04 240);
 
-    /* ── Primary: #1f3a61 — WCAG AAA on white (9.2:1) ── */
-    --primary: oklch(0.285 0.074 243.6);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.2 0.04 240);
+
+    /* Primary: Dark Slate (High Contrast Luxury) */
+    --primary: oklch(0.2 0.04 240);
     --primary-foreground: oklch(1 0 0);
 
-    /* ── Secondary: #496c83 — WCAG AA on white (4.6:1) ── */
-    --secondary: oklch(0.465 0.063 229.8);
-    --secondary-foreground: oklch(1 0 0);
+    /* Secondary: White with Border */
+    --secondary: oklch(1 0 0);
+    --secondary-foreground: oklch(0.2 0.04 240);
 
-    /* ── Muted: teal-mist tint for hover fills ── */
-    --muted: oklch(0.94 0.014 213);
-    --muted-foreground: oklch(0.52 0.048 232); /* readable mid-steel */
+    /* Muted: Gray 100 */
+    --muted: oklch(0.96 0.01 240);
+    --muted-foreground: oklch(0.55 0.04 240);
 
-    /* ── Accent: same teal-mist; coral NEVER here ── */
-    --accent: oklch(0.94 0.014 213);
-    --accent-foreground: oklch(0.285 0.074 243.6);
+    --accent: oklch(0.96 0.01 240);
+    --accent-foreground: oklch(0.2 0.04 240);
 
-    /* ── Destructive ── */
-    --destructive: oklch(0.577 0.245 27.325);
+    --destructive: oklch(0.55 0.18 25);
 
-    /* ── Borders: cool steel-blue tint ── */
-    --border: oklch(0.888 0.02 228);
-    --input: oklch(0.888 0.02 228);
+    --border: oklch(0.92 0.01 240);
+    --input: oklch(0.92 0.01 240);
+    --ring: oklch(0.2 0.04 240);
 
-    /* ── Ring: mid-steel — visible without noise ── */
-    --ring: oklch(0.58 0.055 232);
+    /* Charts */
+    --chart-1: oklch(0.2 0.04 240);
+    --chart-2: oklch(0.55 0.08 220);
+    --chart-3: oklch(0.96 0.01 220);
+    --chart-4: oklch(0.4 0.05 230);
+    --chart-5: oklch(94.349% 0.05275 196.406);
 
-    /* ── Charts ── */
-    --chart-1: oklch(0.285 0.074 243.6);
-    --chart-2: oklch(0.465 0.063 229.8);
-    --chart-3: oklch(0.635 0.055 226.4);
-    --chart-4: oklch(0.855 0.042 208.7);
-    --chart-5: oklch(0.745 0.13 42.8);
-
-    /* ── Sidebar ── */
-    --sidebar: oklch(1 0 0);
-    --sidebar-foreground: oklch(0.285 0.074 243.6);
-    --sidebar-primary: oklch(0.285 0.074 243.6);
+    /* Sidebar */
+    --sidebar: oklch(0.98 0.01 240);
+    --sidebar-foreground: oklch(0.2 0.04 240);
+    --sidebar-primary: oklch(0.2 0.04 240);
     --sidebar-primary-foreground: oklch(1 0 0);
-    --sidebar-accent: oklch(0.94 0.014 213);
-    --sidebar-accent-foreground: oklch(0.285 0.074 243.6);
-    --sidebar-border: oklch(0.888 0.02 228);
-    --sidebar-ring: oklch(0.58 0.055 232);
+    --sidebar-accent: oklch(0.96 0.01 240);
+    --sidebar-accent-foreground: oklch(0.2 0.04 240);
+    --sidebar-border: oklch(0.92 0.01 240);
+    --sidebar-ring: oklch(0.2 0.04 240);
 }
 
-/* ============================================================
-   .dark — DARK MODE
-   Deep navy command field. This is where the palette
-   truly comes alive: the page IS the darkest navy.
-   White text + coral CTA glow against the deep.
-   ============================================================ */
 .dark {
-    /* ── Deep navy page field — #0d1f3c ── */
-    --background: oklch(0.168 0.052 248);
-    --foreground: oklch(0.93 0.012 215); /* warm white */
-
-    --card: oklch(0.21 0.055 246); /* #1f3a61 range */
-    --card-foreground: oklch(0.93 0.012 215);
-    --popover: oklch(0.21 0.055 246);
-    --popover-foreground: oklch(0.93 0.012 215);
-
-    /* ── Primary: pale teal — glows on navy ── */
-    --primary: oklch(0.855 0.042 208.7);
-    --primary-foreground: oklch(0.168 0.052 248);
-
-    --secondary: oklch(0.58 0.052 232);
-    --secondary-foreground: oklch(0.96 0 0);
-
-    --muted: oklch(0.24 0.045 246);
-    --muted-foreground: oklch(0.61 0.038 230);
-
-    --accent: oklch(0.24 0.045 246);
-    --accent-foreground: oklch(0.93 0.012 215);
-
-    --destructive: oklch(0.704 0.191 22.216);
-
-    --border: oklch(0.3 0.048 246);
-    --input: oklch(0.3 0.048 246);
-    --ring: oklch(0.74 0.048 210);
-
-    --chart-1: oklch(0.855 0.042 208.7);
-    --chart-2: oklch(0.635 0.055 226.4);
-    --chart-3: oklch(0.465 0.063 229.8);
-    --chart-4: oklch(0.745 0.13 42.8);
-    --chart-5: oklch(0.37 0.05 243.6);
-
-    --sidebar: oklch(0.21 0.055 246);
-    --sidebar-foreground: oklch(0.93 0.012 215);
-    --sidebar-primary: oklch(0.855 0.042 208.7);
-    --sidebar-primary-foreground: oklch(0.168 0.052 248);
-    --sidebar-accent: oklch(0.24 0.045 246);
-    --sidebar-accent-foreground: oklch(0.93 0.012 215);
-    --sidebar-border: oklch(0.3 0.048 246);
-    --sidebar-ring: oklch(0.74 0.048 210);
+    --background: oklch(0.15 0.03 230);
+    --foreground: oklch(0.98 0.002 240);
+    --card: oklch(0.18 0.03 230);
+    --card-foreground: oklch(0.98 0.002 240);
+    --popover: oklch(0.18 0.03 230);
+    --popover-foreground: oklch(0.98 0.002 240);
+    --primary: oklch(0.98 0.002 240);
+    --primary-foreground: oklch(0.15 0.03 230);
+    --secondary: oklch(0.25 0.04 230);
+    --secondary-foreground: oklch(0.98 0.002 240);
+    --muted: oklch(0.25 0.04 230);
+    --muted-foreground: oklch(0.7 0.03 230);
+    --accent: oklch(0.25 0.04 230);
+    --accent-foreground: oklch(0.98 0.002 240);
+    --destructive: oklch(0.4 0.15 25);
+    --border: oklch(0.25 0.04 230);
+    --input: oklch(0.25 0.04 230);
+    --ring: oklch(0.7 0.03 230);
 }
 
-/* ============================================================
-   BASE
-   ============================================================ */
 @layer base {
     * {
         @apply border-border outline-ring/50;
     }
     body {
         @apply bg-background text-foreground antialiased;
-        font-feature-settings:
-            "kern" 1,
-            "liga" 1,
-            "calt" 1;
-        text-rendering: optimizeLegibility;
-    }
-
-    /* Smooth selection using brand teal */
-    ::selection {
-        background-color: oklch(0.855 0.042 208.7 / 0.3);
-        color: oklch(0.22 0.065 243.6);
     }
 }
 
-/* ============================================================
-   GLOBAL MICRO-DETAILS
-   Subtle texture and depth without noise.
-   ============================================================ */
-
-/* Navbar glass — deeper blue tint instead of neutral gray */
-.backdrop-blur-xl {
-    backdrop-filter: blur(20px) saturate(1.4);
-}
-
-/* Refined scrollbar for desktop */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    background: oklch(0.971 0.007 240);
-}
-::-webkit-scrollbar-thumb {
-    background: oklch(0.72 0.04 228);
-    border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: oklch(0.58 0.055 232);
-}
-
-/* ============================================================
-   PALETTE OVERRIDE — @layer utilities
-   ============================================================
-   WHY THIS WORKS: Tailwind utility classes compile to static
-   declarations. CSS variables set in :root are bypassed unless
-   the JSX uses semantic class names (bg-primary, etc.).
-   Since page.tsx uses hardcoded classes (bg-slate-900, etc.),
-   we remap every single one here at @layer utilities —
-   the correct specificity tier. !important breaks ties when
-   Tailwind v4 JIT generates conflicting declarations.
-
-   REMAPPING LOGIC:
-   ┌─────────────────┬──────────────────────────────────────┐
-   │ Original        │ EaseMed Palette Equivalent           │
-   ├─────────────────┼──────────────────────────────────────┤
-   │ slate-900/800   │ Primary Navy    #1f3a61 / #2e5080    │
-   │ slate-50/100    │ Off-white field #f4f7fb / teal-tint  │
-   │ slate-700/600   │ Steel-blue      #496c83              │
-   │ slate-500/400   │ Mid/light steel #7999b9              │
-   │ slate-300/200   │ Steel borders   oklch(0.888...)      │
-   │ slate-100       │ Teal-mist tint  oklch(0.940...)      │
-   │ sky-600/700     │ Primary navy (hospital = authority)  │
-   │ sky-50/100      │ Teal-tinted surface wash             │
-   │ sky-500         │ Steel-blue mid-tone                  │
-   │ emerald-600/700 │ Secondary steel (vendor = depth)     │
-   │ emerald-50/100  │ Teal-mist surface wash               │
-   │ emerald-500     │ Light steel                          │
-   │ violet-50/100   │ Deep blue tint (analytics)           │
-   │ violet-600/700  │ Secondary steel                      │
-   │ indigo-100/600  │ Deep navy tint (about pillars)       │
-   │ amber-50/100    │ Warm coral-family tint (compliance)  │
-   │ amber-700       │ Coral-deep (readable warm)           │
-   └─────────────────┴──────────────────────────────────────┘
-   ============================================================ */
-
-@layer utilities {
-    /* ──────────────────────────────────────────────────────
-       PAGE-LEVEL BACKGROUNDS
-    ────────────────────────────────────────────────────── */
-
-    /* Main page wrapper: bg-slate-50 */
-    .bg-slate-50 {
-        background-color: oklch(0.971 0.007 240) !important; /* #f4f7fb */
-    }
-
-    /* Section alternation backgrounds */
-    .bg-white {
-        background-color: oklch(1 0 0) !important;
-    }
-
-    /* bg-slate-100 (used in Platform badge pill) */
-    .bg-slate-100 {
-        background-color: oklch(0.94 0.014 213) !important; /* teal-mist tint */
-    }
-
-    /* ──────────────────────────────────────────────────────
-       SLATE — Primary brand chrome
-    ────────────────────────────────────────────────────── */
-
-    /* Buttons, navbar bg, footer wordmark */
-    .bg-slate-900 {
-        background-color: oklch(0.285 0.074 243.6) !important; /* #1f3a61 */
-    }
-    .bg-slate-800 {
-        background-color: oklch(0.335 0.074 243.6) !important; /* #2e5080 */
-    }
-    .hover\:bg-slate-900:hover {
-        background-color: oklch(0.285 0.074 243.6) !important;
-    }
-    .hover\:bg-slate-800:hover {
-        background-color: oklch(0.335 0.074 243.6) !important;
-    }
-
-    /* Modal / mobile menu backdrop */
-    .bg-slate-900\/40 {
-        background-color: oklch(
-            0.14 0.052 248 / 0.55
-        ) !important; /* deeper, richer */
-    }
-
-    /* Decorative divider line in leadership section */
-    .bg-slate-300 {
-        background-color: oklch(0.72 0.04 228) !important; /* steel mid */
-    }
-
-    /* Footer watermark text — very faint navy */
-    .text-slate-100 {
-        color: oklch(
-            0.888 0.02 228
-        ) !important; /* steel-light — barely there */
-    }
-
-    /* Primary headings */
-    .text-slate-900 {
-        color: oklch(0.22 0.065 243.6) !important; /* #1a2f4f */
-    }
-
-    /* Body copy / quote text */
-    .text-slate-700 {
-        color: oklch(0.4 0.065 243.6) !important;
-    }
-
-    /* Supporting copy */
-    .text-slate-600 {
-        color: oklch(0.465 0.063 229.8) !important; /* #496c83 */
-    }
-
-    /* Secondary / meta text */
-    .text-slate-500 {
-        color: oklch(0.56 0.05 228) !important;
-    }
-
-    /* Captions / labels */
-    .text-slate-400 {
-        color: oklch(0.635 0.055 226.4) !important; /* #7999b9 */
-    }
-
-    /* Footer nav / fine print */
-    .text-slate-500.font-medium,
-    .text-slate-500 {
-        color: oklch(0.56 0.05 228) !important;
-    }
-
-    /* Borders */
-    .border-slate-200 {
-        border-color: oklch(0.888 0.02 228) !important;
-    }
-    .border-slate-200\/80 {
-        border-color: oklch(0.888 0.02 228 / 0.8) !important;
-    }
-    .border-slate-100 {
-        border-color: oklch(0.93 0.014 220) !important;
-    }
-
-    /* Button shadow — navy glow */
-    .shadow-slate-900\/20 {
-        box-shadow: 0 4px 16px oklch(0.285 0.074 243.6 / 0.22) !important;
-    }
-    .shadow-slate-900\/10 {
-        box-shadow: 0 2px 10px oklch(0.285 0.074 243.6 / 0.12) !important;
-    }
-
-    /* Text selection */
-    .selection\:bg-sky-100::selection {
-        background-color: oklch(0.855 0.042 208.7 / 0.28) !important;
-    }
-    .selection\:text-sky-900::selection {
-        color: oklch(0.22 0.065 243.6) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       SKY — Hospital side
-       Authority navy actions. Teal-mist surfaces.
-       The hospital = precision, trust, authority.
-    ────────────────────────────────────────────────────── */
-
-    /* Hospital primary CTA button */
-    .bg-sky-600 {
-        background-color: oklch(
-            0.285 0.074 243.6
-        ) !important; /* #1f3a61 — authority */
-    }
-    .bg-sky-700 {
-        background-color: oklch(0.248 0.074 243.6) !important;
-    }
-    .hover\:bg-sky-700:hover {
-        background-color: oklch(0.248 0.074 243.6) !important;
-    }
-
-    /* Icon bg chips */
-    .bg-sky-100 {
-        background-color: oklch(
-            0.926 0.024 213
-        ) !important; /* crisp teal-mist */
-    }
-    /* Card / section wash backgrounds */
-    .bg-sky-50 {
-        background-color: oklch(0.96 0.015 215) !important;
-    }
-
-    /* Icon colors */
-    .text-sky-600 {
-        color: oklch(0.285 0.074 243.6) !important;
-    }
-    .text-sky-700 {
-        color: oklch(0.248 0.074 243.6) !important;
-    }
-    /* Checkmark icons */
-    .text-sky-500 {
-        color: oklch(0.465 0.063 229.8) !important; /* steel-blue depth */
-    }
-
-    /* Hover states (footer social link) */
-    .hover\:text-sky-500:hover {
-        color: oklch(0.465 0.063 229.8) !important;
-    }
-
-    .border-sky-200 {
-        border-color: oklch(0.875 0.03 213) !important;
-    }
-    .border-sky-100 {
-        border-color: oklch(0.926 0.024 213) !important;
-    }
-
-    /* Card hover shadow — navy authority glow */
-    .shadow-sky-500\/10 {
-        --tw-shadow: 0 8px 32px oklch(0.285 0.074 243.6 / 0.1);
-        box-shadow: var(--tw-shadow) !important;
-    }
-    .shadow-sky-500\/20 {
-        --tw-shadow: 0 4px 18px oklch(0.285 0.074 243.6 / 0.2);
-        box-shadow: var(--tw-shadow) !important;
-    }
-    .shadow-sky-500\/5 {
-        --tw-shadow: 0 2px 8px oklch(0.285 0.074 243.6 / 0.06);
-        box-shadow: var(--tw-shadow) !important;
-    }
-
-    /* Gradient start — Hospital card bg-linear-to-br from-sky-50 */
-    .from-sky-50 {
-        --tw-gradient-from: oklch(0.96 0.015 215)
-            var(--tw-gradient-from-position) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       EMERALD — Vendor side
-       Secondary steel. Teal-mist surfaces.
-       Vendor = growth, reach, intelligence.
-    ────────────────────────────────────────────────────── */
-
-    .bg-emerald-600 {
-        background-color: oklch(
-            0.465 0.063 229.8
-        ) !important; /* #496c83 — depth */
-    }
-    .bg-emerald-700 {
-        background-color: oklch(0.415 0.063 229.8) !important;
-    }
-    .hover\:bg-emerald-700:hover {
-        background-color: oklch(0.415 0.063 229.8) !important;
-    }
-
-    /* Verification card icon gradient: from-emerald-500 to-emerald-600 */
-    .from-emerald-500 {
-        --tw-gradient-from: oklch(0.465 0.063 229.8)
-            var(--tw-gradient-from-position) !important;
-    }
-    .to-emerald-600 {
-        --tw-gradient-to: oklch(0.415 0.063 229.8)
-            var(--tw-gradient-to-position) !important;
-    }
-
-    .bg-emerald-100 {
-        background-color: oklch(0.91 0.03 210) !important;
-    }
-    .bg-emerald-50 {
-        background-color: oklch(0.953 0.018 210) !important;
-    }
-
-    .text-emerald-600 {
-        color: oklch(0.465 0.063 229.8) !important;
-    }
-    .text-emerald-700 {
-        color: oklch(0.415 0.063 229.8) !important;
-    }
-    .text-emerald-500 {
-        color: oklch(0.58 0.052 232) !important;
-    }
-
-    .border-emerald-200 {
-        border-color: oklch(0.862 0.034 210) !important;
-    }
-    .border-emerald-100 {
-        border-color: oklch(0.91 0.03 210) !important;
-    }
-
-    .shadow-emerald-500\/10 {
-        --tw-shadow: 0 8px 32px oklch(0.465 0.063 229.8 / 0.12);
-        box-shadow: var(--tw-shadow) !important;
-    }
-    .shadow-emerald-500\/20 {
-        --tw-shadow: 0 4px 18px oklch(0.465 0.063 229.8 / 0.22);
-        box-shadow: var(--tw-shadow) !important;
-    }
-    .shadow-emerald-500\/5 {
-        --tw-shadow: 0 2px 8px oklch(0.465 0.063 229.8 / 0.07);
-        box-shadow: var(--tw-shadow) !important;
-    }
-
-    .from-emerald-50 {
-        --tw-gradient-from: oklch(0.953 0.018 210)
-            var(--tw-gradient-from-position) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       VIOLET — Analytics scroll card (card 3)
-       Deep authority blue family.
-       Analytics = insight, precision, clarity.
-    ────────────────────────────────────────────────────── */
-
-    .bg-violet-50 {
-        background-color: oklch(0.958 0.014 243) !important;
-    }
-    .bg-violet-100 {
-        background-color: oklch(0.912 0.026 242) !important;
-    }
-    .text-violet-600 {
-        color: oklch(0.465 0.063 229.8) !important;
-    }
-    .text-violet-700 {
-        color: oklch(0.415 0.063 229.8) !important;
-    }
-    .border-violet-100 {
-        border-color: oklch(0.912 0.026 242) !important;
-    }
-    /* Card shadow */
-    .shadow-violet-100 {
-        --tw-shadow: 0 4px 16px oklch(0.465 0.063 229.8 / 0.08);
-        box-shadow: var(--tw-shadow) !important;
-    }
-    .from-violet-50 {
-        --tw-gradient-from: oklch(0.958 0.014 243)
-            var(--tw-gradient-from-position) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       INDIGO — About section pillars (Cost Optimization)
-       Deepest navy family.
-    ────────────────────────────────────────────────────── */
-
-    .bg-indigo-100 {
-        background-color: oklch(0.905 0.03 245) !important;
-    }
-    .text-indigo-600 {
-        color: oklch(0.285 0.074 243.6) !important; /* same as primary navy */
-    }
-
-    /* ──────────────────────────────────────────────────────
-       AMBER — Compliance scroll card (card 4)
-       Warm coral family. Intentionally kept warm —
-       compliance/caution needs a distinct signal.
-       Desaturated enough to stay professional.
-    ────────────────────────────────────────────────────── */
-
-    .bg-amber-50 {
-        background-color: oklch(0.97 0.022 52) !important;
-    }
-    .bg-amber-100 {
-        background-color: oklch(0.938 0.044 50) !important;
-    }
-    .text-amber-700 {
-        color: oklch(0.53 0.098 44) !important; /* warm, readable, not garish */
-    }
-    .border-amber-100 {
-        border-color: oklch(0.938 0.044 50) !important;
-    }
-    .from-amber-50 {
-        --tw-gradient-from: oklch(0.97 0.022 52)
-            var(--tw-gradient-from-position) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       LINKEDIN HOVER — Leadership section
-    ────────────────────────────────────────────────────── */
-    .hover\:bg-blue-700:hover {
-        background-color: oklch(
-            0.335 0.115 255
-        ) !important; /* genuine LinkedIn blue */
-    }
-    .hover\:text-blue-700:hover {
-        color: oklch(0.335 0.115 255) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       BUTTON INTERACTIVE STATES
-       Monotonic luminance steps. No hue drift.
-       All transitions: 140ms ease — crisp, not sluggish.
-    ────────────────────────────────────────────────────── */
-
-    /* ── bg-slate-900 buttons (navbar, modal, footer CTA) ── */
-    [data-slot="button"].bg-slate-900 {
-        background-color: oklch(0.285 0.074 243.6) !important;
-        box-shadow:
-            0 1px 3px oklch(0.14 0.052 248 / 0.3),
-            inset 0 1px 0 oklch(1 0 0 / 0.08) !important; /* subtle top inner light */
-        transition:
-            background-color 140ms ease,
-            box-shadow 140ms ease,
-            transform 100ms ease !important;
-    }
-    [data-slot="button"].bg-slate-900:hover,
-    [data-slot="button"].hover\:bg-slate-800:hover {
-        background-color: oklch(
-            0.335 0.074 243.6
-        ) !important; /* +5% luminance */
-        box-shadow:
-            0 3px 10px oklch(0.14 0.052 248 / 0.35),
-            inset 0 1px 0 oklch(1 0 0 / 0.1) !important;
-    }
-    [data-slot="button"].bg-slate-900:active {
-        background-color: oklch(
-            0.248 0.074 243.6
-        ) !important; /* -4% luminance */
-        box-shadow: inset 0 1px 4px oklch(0.1 0.052 248 / 0.25) !important;
-        transform: translateY(1px) !important;
-    }
-
-    /* ── bg-sky-600 hospital CTA ── */
-    [data-slot="button"].bg-sky-600 {
-        background-color: oklch(0.285 0.074 243.6) !important;
-        box-shadow:
-            0 2px 10px oklch(0.285 0.074 243.6 / 0.3),
-            inset 0 1px 0 oklch(1 0 0 / 0.08) !important;
-        transition:
-            background-color 140ms ease,
-            box-shadow 140ms ease,
-            transform 100ms ease !important;
-    }
-    [data-slot="button"].bg-sky-600:hover {
-        background-color: oklch(0.335 0.074 243.6) !important;
-        box-shadow: 0 4px 16px oklch(0.285 0.074 243.6 / 0.38) !important;
-    }
-    [data-slot="button"].bg-sky-600:active {
-        background-color: oklch(0.248 0.074 243.6) !important;
-        transform: translateY(1px) !important;
-    }
-
-    /* ── bg-emerald-600 vendor CTA ── */
-    [data-slot="button"].bg-emerald-600 {
-        background-color: oklch(0.465 0.063 229.8) !important;
-        box-shadow:
-            0 2px 10px oklch(0.465 0.063 229.8 / 0.28),
-            inset 0 1px 0 oklch(1 0 0 / 0.08) !important;
-        transition:
-            background-color 140ms ease,
-            box-shadow 140ms ease,
-            transform 100ms ease !important;
-    }
-    [data-slot="button"].bg-emerald-600:hover {
-        background-color: oklch(0.415 0.063 229.8) !important;
-        box-shadow: 0 4px 16px oklch(0.465 0.063 229.8 / 0.36) !important;
-    }
-    [data-slot="button"].bg-emerald-600:active {
-        background-color: oklch(0.37 0.063 229.8) !important;
-        transform: translateY(1px) !important;
-    }
-
-    /* ── Focus ring — all buttons ── */
-    [data-slot="button"]:focus-visible {
-        outline: 2px solid oklch(0.58 0.055 232) !important;
-        outline-offset: 3px !important;
-        box-shadow: 0 0 0 4px oklch(0.58 0.055 232 / 0.22) !important;
-    }
-
-    /* ── Disabled — all buttons ── */
-    [data-slot="button"]:disabled,
-    [data-slot="button"][data-disabled] {
-        background-color: oklch(0.79 0.014 228) !important;
-        color: oklch(0.56 0.012 228) !important;
-        box-shadow: none !important;
-        cursor: not-allowed !important;
-        opacity: 1 !important;
-        filter: saturate(0.35) !important;
-    }
-
-    /* ── Radix state preservation ── */
-    [data-state="open"] > [data-slot="button"] {
-        background-color: oklch(0.285 0.074 243.6) !important;
-        color: oklch(1 0 0) !important;
-    }
-    [data-disabled] {
-        pointer-events: none;
-        opacity: 0.45;
-        filter: saturate(0.4);
-    }
-
-    /* ── Input focus ── */
-    input:focus,
-    [data-slot="input"]:focus {
-        border-color: oklch(0.465 0.063 229.8) !important;
-        box-shadow: 0 0 0 3px oklch(0.58 0.055 232 / 0.18) !important;
-        outline: none !important;
-    }
-
-    /* Input: focus:border-sky-500 class in modal */
-    .focus\:border-sky-500:focus {
-        border-color: oklch(0.465 0.063 229.8) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       NAVBAR GLASS PANEL
-       Override the default white/90 to have the correct
-       cool undertone — feels like frosted institutional steel
-    ────────────────────────────────────────────────────── */
-    .bg-white\/90 {
-        background-color: oklch(0.996 0.004 240 / 0.92) !important;
-        /* Hint of blue-white rather than pure neutral white */
-    }
-
-    .bg-white\/95 {
-        background-color: oklch(0.998 0.003 240 / 0.96) !important;
-    }
-
-    /* ──────────────────────────────────────────────────────
-       SECTION BORDERS
-       All border-t border-slate-200 section dividers
-       get a subtle cool tint — feels architectural
-    ────────────────────────────────────────────────────── */
-    .border-t.border-slate-200,
-    .border-b.border-slate-200 {
-        border-color: oklch(0.876 0.022 228) !important;
-    }
-}
-
-/* ============================================================
-   COMPONENT LAYER — Hover transitions on non-button elements
-   ============================================================ */
-@layer components {
-    /* Card hover states — lift with correct shadow color */
-    .hover\:shadow-xl:hover {
-        box-shadow:
-            0 12px 40px oklch(0.285 0.074 243.6 / 0.1),
-            0 4px 16px oklch(0.285 0.074 243.6 / 0.06) !important;
-    }
-
-    /* Tag pills in scroll stack cards */
-    .rounded-lg.border.border-slate-200 {
-        border-color: oklch(0.888 0.02 228) !important;
-        color: oklch(0.465 0.063 229.8) !important;
-    }
-
-    /* Leadership section quote mark color */
-    .text-slate-200 {
-        color: oklch(0.888 0.02 228) !important;
-    }
-}
-
-/* ============================================================
+/* ============================================
    ScrollStack Component Styles
-   ============================================================ */
+   ============================================ */
 
+/* Hide scrollbar utility */
 .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
     display: none;
     width: 0;
@@ -797,46 +169,61 @@ body {
     @apply shadow-xl;
     @apply box-border;
 
+    /* Performance optimizations */
     transform-origin: top center;
     will-change: transform, filter;
     backface-visibility: hidden;
     transform-style: preserve-3d;
+
+    /* GPU acceleration */
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     perspective: 1000px;
     -webkit-perspective: 1000px;
 
+    /* Responsive heights - INCREASED for better visibility */
     height: auto;
-    min-height: 20rem;
+    min-height: 20rem; /* 320px - increased from 16rem */
 }
 
 @media (min-width: 640px) {
     .scroll-stack-card {
-        min-height: 24rem;
+        min-height: 24rem; /* 384px - increased from 18rem */
     }
 }
+
 @media (min-width: 1024px) {
     .scroll-stack-card {
-        min-height: 26rem;
+        min-height: 26rem; /* 416px - increased from 20rem */
     }
 }
 
-/* ============================================================
-   LogisticsScroll Mobile Optimizations
-   ============================================================ */
+/* ============================================
+   End ScrollStack Styles
+   ============================================ */
 
+/* ============================================
+   LogisticsScroll Mobile Optimizations
+   ============================================ */
+
+/* Mobile: Canvas below text, more prominent pauses */
 @media (max-width: 1023px) {
+    /* Make the scroll sections more prominent with longer pauses */
     .logistics-scroll-section,
     .scroll-section,
     [data-scroll-section] {
         min-height: 120vh !important;
         padding: 8rem 0 !important;
     }
+
+    /* Stack layout on mobile - text above, canvas below */
     .logistics-scroll-container,
     .scroll-container {
         flex-direction: column !important;
         gap: 2rem !important;
     }
+
+    /* Text content takes full width on mobile */
     .logistics-scroll-content,
     .scroll-content {
         width: 100% !important;
@@ -844,6 +231,8 @@ body {
         order: 1 !important;
         margin-bottom: 2rem !important;
     }
+
+    /* Canvas/visual below text on mobile */
     .logistics-scroll-canvas,
     .scroll-canvas,
     .canvas-container {
@@ -854,10 +243,14 @@ body {
         height: 50vh !important;
         margin: 0 auto !important;
     }
+
+    /* Increase scroll distance between sections */
     .logistics-scroll-spacer,
     .scroll-spacer {
         height: 80vh !important;
     }
+
+    /* Make pause points more obvious */
     .scroll-pause-point {
         min-height: 100vh !important;
         display: flex !important;
@@ -866,12 +259,14 @@ body {
     }
 }
 
+/* Tablet optimization */
 @media (min-width: 640px) and (max-width: 1023px) {
     .logistics-scroll-canvas,
     .scroll-canvas,
     .canvas-container {
         height: 60vh !important;
     }
+
     .logistics-scroll-section,
     .scroll-section,
     [data-scroll-section] {
@@ -880,16 +275,20 @@ body {
     }
 }
 
+/* Desktop: Keep original side-by-side layout */
 @media (min-width: 1024px) {
+    /* Canvas on the right (original behavior) */
     .logistics-scroll-container,
     .scroll-container {
         flex-direction: row !important;
     }
+
     .logistics-scroll-content,
     .scroll-content {
         width: 50% !important;
         order: 1 !important;
     }
+
     .logistics-scroll-canvas,
     .scroll-canvas,
     .canvas-container {
@@ -899,3 +298,7 @@ body {
         top: 0 !important;
     }
 }
+
+/* ============================================
+   End LogisticsScroll Mobile Optimizations
+   ============================================ */

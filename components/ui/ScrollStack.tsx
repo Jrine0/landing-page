@@ -54,12 +54,7 @@ const ScrollStack = ({
   const lastTransformsRef = useRef(
     new Map<
       number,
-      {
-        translateY: number;
-        scale: number;
-        rotation: number;
-        blur: number;
-      }
+      { translateY: number; scale: number; rotation: number; blur: number }
     >(),
   );
   const isUpdatingRef = useRef(false);
@@ -92,13 +87,8 @@ const ScrollStack = ({
       };
     } else {
       const scroller = scrollerRef.current;
-      if (!scroller) {
-        return {
-          scrollTop: 0,
-          containerHeight: 0,
-          scrollContainer: null,
-        };
-      }
+      if (!scroller)
+        return { scrollTop: 0, containerHeight: 0, scrollContainer: null };
       return {
         scrollTop: scroller.scrollTop,
         containerHeight: scroller.clientHeight,
@@ -121,7 +111,6 @@ const ScrollStack = ({
 
   const updateCardTransforms = useCallback(() => {
     if (!cardsRef.current.length || isUpdatingRef.current) return;
-
     isUpdatingRef.current = true;
 
     const { scrollTop, containerHeight } = getScrollData();
@@ -166,11 +155,8 @@ const ScrollStack = ({
           const jCardTop = getElementOffset(jCard);
           const jTriggerStart =
             jCardTop - stackPositionPx - itemStackDistance * j;
-          if (scrollTop >= jTriggerStart) {
-            topCardIndex = j;
-          }
+          if (scrollTop >= jTriggerStart) topCardIndex = j;
         }
-
         if (i < topCardIndex) {
           const depthInStack = topCardIndex - i;
           blur = Math.max(0, depthInStack * blurAmount);
@@ -206,10 +192,8 @@ const ScrollStack = ({
         const transform = `translate3d(0, ${newTransform.translateY}px, 0) scale(${newTransform.scale}) rotate(${newTransform.rotation}deg)`;
         const filter =
           newTransform.blur > 0 ? `blur(${newTransform.blur}px)` : "";
-
         card.style.transform = transform;
         card.style.filter = filter;
-
         lastTransformsRef.current.set(i, newTransform);
       }
 
@@ -258,26 +242,21 @@ const ScrollStack = ({
         syncTouch: true,
         syncTouchLerp: 0.075,
       });
-
       lenis.on("scroll", handleScroll);
-
       const raf = (time: number) => {
         lenis.raf(time);
         animationFrameRef.current = requestAnimationFrame(raf);
       };
       animationFrameRef.current = requestAnimationFrame(raf);
-
       lenisRef.current = lenis;
       return lenis;
     } else {
       const scroller = scrollerRef.current;
       if (!scroller) return;
-
       const innerContent = scroller.querySelector(
         ".scroll-stack-inner",
       ) as HTMLElement;
       if (!innerContent) return;
-
       const lenis = new Lenis({
         wrapper: scroller,
         content: innerContent,
@@ -291,15 +270,12 @@ const ScrollStack = ({
         syncTouch: true,
         syncTouchLerp: 0.075,
       });
-
       lenis.on("scroll", handleScroll);
-
       const raf = (time: number) => {
         lenis.raf(time);
         animationFrameRef.current = requestAnimationFrame(raf);
       };
       animationFrameRef.current = requestAnimationFrame(raf);
-
       lenisRef.current = lenis;
       return lenis;
     }
@@ -319,9 +295,7 @@ const ScrollStack = ({
     const transformsCache = lastTransformsRef.current;
 
     cards.forEach((card, i) => {
-      if (i < cards.length - 1) {
-        card.style.marginBottom = `${itemDistance}px`;
-      }
+      if (i < cards.length - 1) card.style.marginBottom = `${itemDistance}px`;
       card.style.willChange = "transform, filter";
       card.style.transformOrigin = "top center";
       card.style.backfaceVisibility = "hidden";
@@ -332,16 +306,12 @@ const ScrollStack = ({
     });
 
     setupLenis();
-
     updateCardTransforms();
 
     return () => {
-      if (animationFrameRef.current) {
+      if (animationFrameRef.current)
         cancelAnimationFrame(animationFrameRef.current);
-      }
-      if (lenisRef.current) {
-        lenisRef.current.destroy();
-      }
+      if (lenisRef.current) lenisRef.current.destroy();
       stackCompletedRef.current = false;
       cardsRef.current = [];
       transformsCache.clear();
@@ -372,9 +342,13 @@ const ScrollStack = ({
         willChange: "scroll-position",
       }}
     >
-      <div className="scroll-stack-inner py-[20vh] px-4 sm:px-8 md:px-12 lg:px-20 pb-[50rem] min-h-screen">
+      {/*
+        Key change: pb was `pb-[50rem]` which caused massive excess scroll.
+        Now set to `pb-[8rem]` — enough for the last card to release cleanly
+        without a dead scroll zone afterward.
+      */}
+      <div className="scroll-stack-inner py-[12vh] px-4 sm:px-8 md:px-12 lg:px-20 pb-[8rem] min-h-screen">
         {children}
-        {/* Spacer so the last pin can release cleanly */}
         <div className="scroll-stack-end w-full h-px" />
       </div>
     </div>
