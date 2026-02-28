@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import ProcurementStepsSection from "@/components/ui/ProcurementStepsSection";
 import {
   Loader2,
   X,
@@ -785,150 +786,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ── PLATFORM SHOWCASE ─── */}
-      <section
-        id="platform"
-        className="py-16 sm:py-24 lg:py-32 bg-[#2d4f7a] border-t border-[#3a6090] relative z-20"
-      >
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="text-center mb-10 sm:mb-16">
-            <div className="inline-block mb-4">
-              <span className="py-1 sm:py-1.5 px-4 sm:px-5 text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase bg-white/[.12] text-[#b2d6e0] border border-[#b2d6e0]/30">
-                Platform
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight mb-3 sm:mb-4 px-4 text-white">
-              Experience the Platform
-            </h2>
-            <p className="text-base sm:text-lg max-w-2xl mx-auto px-4 text-[#b2d6e0]">
-              See how EaseMed transforms procurement workflows with intelligent
-              automation
-            </p>
-          </div>
-
-          <div className="h-[150vh] relative">
-            <ScrollStack
-              itemDistance={200}
-              itemStackDistance={40}
-              stackPosition="10%"
-              baseScale={0.92}
-              blurAmount={1}
-            >
-              {[
-                {
-                  badge: {
-                    Icon: Target,
-                    label: "Smart Matching",
-                    bg: "bg-[#dbeeff]",
-                    color: "text-[#1f3a61]",
-                  },
-                  title: "AI-Powered Supplier Discovery",
-                  desc: "Our intelligent matching engine analyzes your requirements and instantly connects you with verified suppliers that meet your exact specifications.",
-                  tags: [
-                    "Real-time Matching",
-                    "Quality Score",
-                    "Compliance Check",
-                  ],
-                  img: "/dashboard(1).png",
-                  imgAlt: "Dashboard Overview",
-                  cardClass:
-                    "border-2 border-[#7999b9]/[.45] bg-gradient-to-br from-white/[.92] to-[#e8f4f7]/[.82] backdrop-blur-[16px] shadow-[0_8px_32px_rgba(13,31,60,0.22)]",
-                },
-                {
-                  badge: {
-                    Icon: Zap,
-                    label: "Instant Quotes",
-                    bg: "bg-[#d6eae0]",
-                    color: "text-[#1f3a61]",
-                  },
-                  title: "Automated Bid Generation",
-                  desc: "Generate and compare competitive bids in seconds. Our AI analyzes market data to ensure you get the best possible pricing.",
-                  tags: ["Price Intelligence", "Multi-Vendor", "Auto-Compare"],
-                  img: "/dashboard(2).png",
-                  imgAlt: "Bid Management",
-                  cardClass:
-                    "border-2 border-[#496c83]/[.45] bg-gradient-to-br from-white/[.92] to-[#e0eef4]/[.82] backdrop-blur-[16px] shadow-[0_8px_32px_rgba(13,31,60,0.22)]",
-                },
-                {
-                  badge: {
-                    Icon: BarChart3,
-                    label: "Analytics",
-                    bg: "bg-[#e2e8f4]",
-                    color: "text-[#1f3a61]",
-                  },
-                  title: "Advanced Analytics Dashboard",
-                  desc: "Track procurement performance with real-time insights. Make data-driven decisions to optimize your supply chain.",
-                  tags: ["Live Metrics", "Cost Savings", "Performance"],
-                  img: "/dashboard(3).png",
-                  imgAlt: "Analytics Dashboard",
-                  cardClass:
-                    "border-2 border-[#2e5080]/[.50] bg-gradient-to-br from-white/[.92] to-[#dae8f2]/[.82] backdrop-blur-[16px] shadow-[0_8px_32px_rgba(13,31,60,0.22)]",
-                },
-                {
-                  badge: {
-                    Icon: Shield,
-                    label: "Compliance",
-                    bg: "bg-[#ffe5d8]",
-                    color: "text-[#c4622a]",
-                  },
-                  title: "Automated Compliance Tracking",
-                  desc: "Stay compliant with automated tracking and verification. Our system ensures all suppliers meet regulatory requirements.",
-                  tags: ["Auto-Verify", "Audit Trail", "Certifications"],
-                  img: "/dashboard(4).png",
-                  imgAlt: "Compliance Dashboard",
-                  cardClass:
-                    "border-2 border-[#ffa07a]/[.45] bg-gradient-to-br from-white/[.92] to-[#fff5f0]/[.82] backdrop-blur-[16px] shadow-[0_8px_32px_rgba(13,31,60,0.22)]",
-                },
-              ].map(({ badge, title, desc, tags, img, imgAlt, cardClass }) => (
-                <ScrollStackItem key={title} itemClassName={cardClass}>
-                  <div className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center h-full">
-                    <div className="space-y-4">
-                      <div
-                        className={cn(
-                          "inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold",
-                          badge.bg,
-                          badge.color,
-                        )}
-                        style={{ borderRadius: "2px" }}
-                      >
-                        <badge.Icon className="h-3.5 w-3.5" /> {badge.label}
-                      </div>
-                      <h3 className="text-2xl sm:text-3xl font-bold font-heading text-[#1f3a61]">
-                        {title}
-                      </h3>
-                      <p className="text-sm sm:text-base leading-relaxed text-[#496c83]">
-                        {desc}
-                      </p>
-                      <div className="flex flex-wrap gap-2 pt-2">
-                        {tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-white border border-[#d4dce8] text-xs font-medium text-[#496c83]"
-                            style={{ borderRadius: "1px" }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    <div
-                      className="relative h-48 sm:h-64 lg:h-full overflow-hidden shadow-2xl border border-[#d4dce8]"
-                      style={{ borderRadius: "2px" }}
-                    >
-                      <img
-                        src={img}
-                        alt={imgAlt}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                  </div>
-                </ScrollStackItem>
-              ))}
-            </ScrollStack>
-          </div>
-        </div>
-      </section>
+      <ProcurementStepsSection />
 
       {/* ── LEADERSHIP ─── */}
       <section
