@@ -14,7 +14,7 @@ const inter = Inter({
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-jakarta",
+  variable: "--font-plus-jakarta",
   display: "swap",
 });
 
@@ -29,10 +29,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${inter.variable} ${jakarta.variable} antialiased font-sans`}
-      >
+    <html
+      lang="en"
+      className={`${inter.variable} ${jakarta.variable} scroll-smooth`}
+    >
+      <body className="antialiased font-sans">
         <AuthProvider>
           <SmoothScroll>
             {children}

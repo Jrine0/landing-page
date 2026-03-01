@@ -16,7 +16,7 @@ body {
 
     /* --- Fonts Configuration --- */
     --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-    --font-heading: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: var(--font-mono);
 
     --color-sidebar: var(--sidebar);

@@ -74,7 +74,6 @@ const RequestAccessModal = ({
             className="w-full max-w-[400px] bg-white p-8 shadow-2xl relative"
             style={{ borderRadius: "2px" }}
           >
-            {/* Top accent bar */}
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#1f3a61]" />
 
             <button
@@ -85,11 +84,11 @@ const RequestAccessModal = ({
             </button>
 
             <div className="mb-6">
-              <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#7999b9] mb-2">
-                Enterprise Access
+              <p className="text-[10px] font-bold tracking-wide text-[#7999b9] mb-2">
+                Enterprise access
               </p>
               <h1 className="text-xl font-bold text-[#1f3a61] leading-tight">
-                Apply for Network Access
+                Apply for network access
               </h1>
             </div>
 
@@ -99,26 +98,26 @@ const RequestAccessModal = ({
                   key={r}
                   onClick={() => setRole(r as "hospital" | "vendor")}
                   className={cn(
-                    "flex-1 py-2 text-[11px] font-bold uppercase tracking-[0.15em] transition-all capitalize",
+                    "flex-1 py-2 text-[11px] font-bold tracking-wide transition-all capitalize",
                     role === r
                       ? "bg-[#1f3a61] text-white"
                       : "bg-white text-[#7999b9] hover:text-[#496c83]",
                   )}
                 >
-                  {r === "hospital" ? "Health System" : "Supplier"}
+                  {r === "hospital" ? "Health system" : "Supplier"}
                 </button>
               ))}
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
               <input
-                placeholder="Organization Name"
+                placeholder="Organization name"
                 className="w-full h-10 px-3 text-sm text-[#1f3a61] border border-[#d4dce8] focus:outline-none focus:border-[#1f3a61] transition-colors bg-[#f8fafc] placeholder:text-[#a0b3c6]"
                 style={{ borderRadius: "1px" }}
                 required
               />
               <input
-                placeholder="Work Email"
+                placeholder="Work email"
                 type="email"
                 className="w-full h-10 px-3 text-sm text-[#1f3a61] border border-[#d4dce8] focus:outline-none focus:border-[#1f3a61] transition-colors bg-[#f8fafc] placeholder:text-[#a0b3c6]"
                 style={{ borderRadius: "1px" }}
@@ -127,14 +126,14 @@ const RequestAccessModal = ({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-10 text-white bg-[#1f3a61] hover:bg-[#2e5080] transition-colors text-[11px] font-bold tracking-[0.15em] uppercase flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full h-10 text-white bg-[#1f3a61] hover:bg-[#2e5080] transition-colors text-sm font-semibold flex items-center justify-center gap-2 disabled:opacity-70"
                 style={{ borderRadius: "1px" }}
               >
                 {loading ? (
                   <Loader2 className="h-4 w-4 animate-spin" />
                 ) : (
                   <>
-                    Apply for Access <ArrowRight className="h-3.5 w-3.5" />
+                    Apply for access <ArrowRight className="h-3.5 w-3.5" />
                   </>
                 )}
               </button>
@@ -183,13 +182,12 @@ const MobileMenu = ({
             className="absolute right-0 top-0 bottom-0 w-[280px] bg-white shadow-2xl border-l border-[#e2e8f0]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Top accent */}
             <div className="h-[3px] bg-[#1f3a61] w-full" />
 
             <div className="p-8">
               <div className="flex items-center justify-between mb-10">
-                <span className="text-base font-black tracking-[-0.04em] text-[#1f3a61] uppercase">
-                  EaseMed
+                <span className="text-base font-black tracking-[-0.04em] text-[#1f3a61]">
+                  easemed
                 </span>
                 <button
                   onClick={onClose}
@@ -208,7 +206,7 @@ const MobileMenu = ({
                   <Link
                     key={href}
                     href={href}
-                    className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#7999b9] hover:text-[#1f3a61] transition-colors py-3 border-b border-[#f0f4fa]"
+                    className="text-sm font-medium text-[#7999b9] hover:text-[#1f3a61] transition-colors py-3 border-b border-[#f0f4fa]"
                     onClick={onClose}
                   >
                     {label}
@@ -223,7 +221,7 @@ const MobileMenu = ({
                       onDashboard();
                       onClose();
                     }}
-                    className="w-full h-10 bg-[#1f3a61] text-white text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#2e5080] transition-colors"
+                    className="w-full h-10 bg-[#1f3a61] text-white text-sm font-semibold hover:bg-[#2e5080] transition-colors"
                     style={{ borderRadius: "1px" }}
                   >
                     Dashboard
@@ -234,10 +232,10 @@ const MobileMenu = ({
                       onRequestAccess();
                       onClose();
                     }}
-                    className="w-full h-10 bg-[#1f3a61] text-white text-[11px] font-bold tracking-[0.15em] uppercase hover:bg-[#2e5080] transition-colors flex items-center justify-center gap-2"
+                    className="w-full h-10 bg-[#1f3a61] text-white text-sm font-semibold hover:bg-[#2e5080] transition-colors flex items-center justify-center gap-2"
                     style={{ borderRadius: "1px" }}
                   >
-                    Get Network Access <ArrowRight className="h-3.5 w-3.5" />
+                    Get network access <ArrowRight className="h-3.5 w-3.5" />
                   </button>
                 )}
               </div>
@@ -281,7 +279,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f7fb] text-[#1f3a61] font-sans relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#f4f7fb] text-[#1f3a61] font-heading relative overflow-x-hidden">
       <RequestAccessModal
         isOpen={isRequestModalOpen}
         onClose={() => setIsRequestModalOpen(false)}
@@ -311,7 +309,6 @@ export default function HomePage() {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
-          {/* LEFT — Wordmark */}
           <Link href="/" className="flex items-center gap-3 group">
             <img
               src="/logo2.png"
@@ -319,14 +316,13 @@ export default function HomePage() {
               className="h-10 w-10 object-contain opacity-80"
             />
             <span
-              className="text-[18px] font-black tracking-[-0.04em] text-[#1f3a61] uppercase select-none"
+              className="text-[18px] font-black text-[#1f3a61] select-none"
               style={{ letterSpacing: "-0.03em" }}
             >
-              EaseMed
+              easemed
             </span>
           </Link>
 
-          {/* CENTER — Nav */}
           <nav className="hidden lg:flex items-center gap-10">
             {[
               { href: "#platform", label: "Platform" },
@@ -336,20 +332,19 @@ export default function HomePage() {
               <Link
                 key={href}
                 href={href}
-                className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#7999b9] hover:text-[#1f3a61] transition-colors duration-150"
+                className="text-sm font-medium text-[#7999b9] hover:text-[#1f3a61] transition-colors duration-150"
               >
                 {label}
               </Link>
             ))}
           </nav>
 
-          {/* RIGHT — CTA */}
           <div className="flex items-center gap-4">
             {user ? (
               <button
                 onClick={handleDashboardClick}
                 disabled={redirecting}
-                className="hidden sm:flex h-9 px-5 items-center gap-2 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-[11px] font-bold tracking-[0.15em] uppercase transition-colors disabled:opacity-60"
+                className="hidden sm:flex h-9 px-5 items-center gap-2 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-sm font-semibold transition-colors disabled:opacity-60"
                 style={{ borderRadius: "1px" }}
               >
                 {redirecting ? (
@@ -361,10 +356,10 @@ export default function HomePage() {
             ) : (
               <button
                 onClick={() => setIsRequestModalOpen(true)}
-                className="hidden sm:flex h-9 px-5 items-center gap-1.5 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-[11px] font-bold tracking-[0.15em] uppercase transition-colors"
+                className="hidden sm:flex h-9 px-5 items-center gap-1.5 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-sm font-semibold transition-colors"
                 style={{ borderRadius: "1px" }}
               >
-                Get Network Access
+                Get network access
                 <ArrowRight className="h-3 w-3" />
               </button>
             )}
@@ -401,7 +396,7 @@ export default function HomePage() {
               Icon: Zap,
               iconBg: "bg-[#dbeeff]",
               iconColor: "text-[#1f3a61]",
-              title: "Lightning Fast",
+              title: "Lightning fast",
               body: "Reduce procurement cycles from days to minutes with AI automation",
             },
             {
@@ -409,7 +404,7 @@ export default function HomePage() {
               Icon: Shield,
               iconBg: "bg-[#d6eae0]",
               iconColor: "text-[#496c83]",
-              title: "Verified Network",
+              title: "Verified network",
               body: "Every supplier is rigorously vetted for quality and compliance",
             },
             {
@@ -417,7 +412,7 @@ export default function HomePage() {
               Icon: TrendingUp,
               iconBg: "bg-[#ffe5d8]",
               iconColor: "text-[#c4622a]",
-              title: "Cost Savings",
+              title: "Cost savings",
               body: "Transparent bidding ensures optimal pricing and eliminates hidden costs",
             },
           ].map(({ top, Icon, iconBg, iconColor, title, body }) => (
@@ -443,7 +438,7 @@ export default function HomePage() {
                     <Icon className={cn("h-5 w-5", iconColor)} />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1 text-[#1f3a61] text-sm uppercase tracking-wide">
+                    <h3 className="font-bold mb-1 text-[#1f3a61] text-sm">
                       {title}
                     </h3>
                     <p className="text-sm text-[#496c83]">{body}</p>
@@ -474,8 +469,8 @@ export default function HomePage() {
                     <Shield className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#7999b9] mb-1">
-                      Verified Supplier Network
+                    <p className="text-xs font-semibold text-[#7999b9] mb-1">
+                      Verified supplier network
                     </p>
                     <p className="text-sm leading-relaxed text-[#496c83]">
                       Every supplier undergoes multi-layer compliance checks
@@ -484,9 +479,9 @@ export default function HomePage() {
                   </div>
                 </div>
                 {[
-                  "ISO Certified Partners",
-                  "Real-time Compliance Monitoring",
-                  "Automated Quality Assurance",
+                  "ISO certified partners",
+                  "Real-time compliance monitoring",
+                  "Automated quality assurance",
                 ].map((item) => (
                   <div
                     key={item}
@@ -512,11 +507,11 @@ export default function HomePage() {
         >
           <div className="container mx-auto px-4 max-w-6xl">
             <div className="text-center mb-10 sm:mb-16">
-              <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#7999b9] mb-4">
+              <p className="text-xs font-semibold text-[#7999b9] mb-4">
                 Join us
               </p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight mb-3 sm:mb-4 px-4 text-[#1f3a61]">
-                Select Your Portal
+                Select your portal
               </h2>
               <p className="text-base sm:text-lg max-w-xl mx-auto px-4 text-[#496c83]">
                 Enterprise access is role-specific. Choose the portal that
@@ -536,11 +531,11 @@ export default function HomePage() {
                 >
                   <Hospital className="h-6 w-6 text-[#c4622a]" />
                 </div>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#c4622a] mb-2">
-                  Health Systems
+                <p className="text-xs font-semibold text-[#c4622a] mb-2">
+                  Health systems
                 </p>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#1f3a61]">
-                  Hospital Procurement Portal
+                  Hospital procurement portal
                 </h3>
                 <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed text-[#496c83]">
                   Optimize procurement, reduce costs, and ensure compliance
@@ -563,11 +558,12 @@ export default function HomePage() {
                   ))}
                 </div>
                 <button
-                  className="w-full h-10 sm:h-11 bg-[#ffa07a] hover:bg-[#e8855e] text-white text-[11px] font-bold tracking-[0.15em] uppercase transition-colors flex items-center justify-center gap-2"
+                  className="w-full h-10 sm:h-11 bg-[#ffa07a] hover:bg-[#e8855e] text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                   style={{ borderRadius: "1px" }}
                   onClick={() => setIsRequestModalOpen(true)}
                 >
-                  Apply as Health System <ArrowRight className="h-3.5 w-3.5" />
+                  Apply as a health system{" "}
+                  <ArrowRight className="h-3.5 w-3.5" />
                 </button>
               </div>
 
@@ -582,11 +578,11 @@ export default function HomePage() {
                 >
                   <Store className="h-6 w-6 text-[#c4622a]" />
                 </div>
-                <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[#c4622a] mb-2">
+                <p className="text-xs font-semibold text-[#c4622a] mb-2">
                   Suppliers
                 </p>
                 <h3 className="text-xl sm:text-2xl font-bold mb-3 text-[#1f3a61]">
-                  Supplier Partner Portal
+                  Supplier partner portal
                 </h3>
                 <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed text-[#496c83]">
                   Access verified demand signals, submit bids, and grow your
@@ -609,11 +605,11 @@ export default function HomePage() {
                   ))}
                 </div>
                 <button
-                  className="w-full h-10 sm:h-11 bg-[#ffa07a] hover:bg-[#e8855e] text-white text-[11px] font-bold tracking-[0.15em] uppercase transition-colors flex items-center justify-center gap-2"
+                  className="w-full h-10 sm:h-11 bg-[#ffa07a] hover:bg-[#e8855e] text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2"
                   style={{ borderRadius: "1px" }}
                   onClick={() => setIsRequestModalOpen(true)}
                 >
-                  Apply as Supplier Partner{" "}
+                  Apply as a supplier partner{" "}
                   <ArrowRight className="h-3.5 w-3.5" />
                 </button>
               </div>
@@ -629,9 +625,8 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-10 sm:mb-16">
-            {/* Removed the "Intelligence" label badge that was here */}
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight mb-3 sm:mb-4 px-4 text-[#1f3a61]">
-              Unbiased Procurement
+              Unbiased procurement
             </h2>
             <p className="text-base sm:text-lg max-w-2xl mx-auto px-4 text-[#496c83]">
               The broken loop between demand and supply — manual hunting on one
@@ -642,11 +637,10 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
             {/* Hospital Side */}
             <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-[10px] sm:text-xs font-bold text-[#7999b9] uppercase tracking-widest mb-2">
-                The Hospital Struggle
+              <h3 className="text-xs font-semibold text-[#7999b9] mb-2">
+                The hospital struggle
               </h3>
 
-              {/* Merged top 2 hospital problem cards into one */}
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#f0f4fa] border-[#d8e0ec]"
                 style={{ borderRadius: "2px" }}
@@ -660,7 +654,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base mb-1 text-[#1f3a61]">
-                      Manual Hunting
+                      Manual hunting
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
                       Hospitals waste hours searching for suppliers across
@@ -677,7 +671,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base mb-1 text-[#1f3a61]">
-                      Slow Purchase Cycles
+                      Slow purchase cycles
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
                       Traditional procurement stretches days into weeks with
@@ -687,7 +681,6 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Hospital solution card — unchanged */}
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#1f3a61] border-[#2e5080] shadow-[0_4px_20px_rgba(31,58,97,0.20)]"
                 style={{ borderRadius: "2px" }}
@@ -701,7 +694,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base mb-1 text-white">
-                      The EaseMed Solution: Intelligent Capture
+                      Intelligent capture
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#b2d6e0]">
                       AI captures requirements, auto-matches to verified
@@ -714,11 +707,10 @@ export default function HomePage() {
 
             {/* Vendor Side */}
             <div className="space-y-4 sm:space-y-6">
-              <h3 className="text-[10px] sm:text-xs font-bold text-[#7999b9] uppercase tracking-widest mb-2">
-                The Supplier Struggle
+              <h3 className="text-xs font-semibold text-[#7999b9] mb-2">
+                The supplier struggle
               </h3>
 
-              {/* Merged top 2 vendor problem cards into one */}
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#f0f4fa] border-[#d8e0ec]"
                 style={{ borderRadius: "2px" }}
@@ -732,7 +724,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base mb-1 text-[#1f3a61]">
-                      Unclear Demand
+                      Unclear demand
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
                       Suppliers struggle to identify real demand signals across
@@ -749,7 +741,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base mb-1 text-[#1f3a61]">
-                      Time-Consuming Quotations
+                      Time-consuming quotations
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
                       Manual quoting processes drain resources and lead to
@@ -759,7 +751,6 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Vendor solution card — unchanged */}
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#1f3a61] border-[#5a7d96] shadow-[0_4px_20px_rgba(73,108,131,0.22)]"
                 style={{ borderRadius: "2px" }}
@@ -773,7 +764,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h4 className="font-bold text-sm sm:text-base mb-1 text-white">
-                      The EaseMed Solution: Smart Matching
+                      Smart matching
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#cfe4ec]">
                       AI-powered demand signals, automated bid preparation, and
@@ -808,7 +799,6 @@ export default function HomePage() {
                 />
               </div>
 
-              {/* Button OUTSIDE the bordered box */}
               <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 sm:-bottom-7 z-10">
                 <a
                   href="https://www.linkedin.com/in/nikita-akolikar"
@@ -816,7 +806,7 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                 >
                   <button
-                    className="h-10 sm:h-12 px-6 sm:px-8 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-[11px] font-bold tracking-[0.15em] uppercase transition-all hover:-translate-y-1 flex items-center gap-2 shadow-xl"
+                    className="h-10 sm:h-12 px-6 sm:px-8 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-sm font-semibold transition-all hover:-translate-y-1 flex items-center gap-2 shadow-xl"
                     style={{ borderRadius: "1px" }}
                   >
                     <Linkedin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
@@ -829,7 +819,7 @@ export default function HomePage() {
             <div className="order-1 lg:order-2">
               <div className="flex items-center gap-3 mb-4 sm:mb-6">
                 <div className="h-px w-6 sm:w-8 bg-[#7999b9]"></div>
-                <span className="text-[10px] sm:text-xs font-bold tracking-widest text-[#7999b9] uppercase">
+                <span className="text-xs font-semibold text-[#7999b9]">
                   About us
                 </span>
               </div>
@@ -845,15 +835,15 @@ export default function HomePage() {
                 </p>
                 <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed font-heading text-[#2d4f7a]">
                   Leading businesses across 4 continents. We are building
-                  EaseMed to democratize global healthcare access through
+                  easemed to democratize global healthcare access through
                   intelligent logistics.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10 border-t border-[#d4dce8] pt-6 sm:pt-8">
                 <div>
-                  <h4 className="flex items-center gap-2 font-bold text-[#1f3a61] text-xs sm:text-sm mb-2 uppercase tracking-wide">
-                    <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#496c83]" />{" "}
-                    Track Record
+                  <h4 className="flex items-center gap-2 font-bold text-[#1f3a61] text-xs sm:text-sm mb-2">
+                    <TrendingUp className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#496c83]" />
+                    Track record
                   </h4>
                   <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
                     5+ years sourcing for 30+ clients. Multi-million dollar deal
@@ -861,8 +851,8 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div>
-                  <h4 className="flex items-center gap-2 font-bold text-[#1f3a61] text-xs sm:text-sm mb-2 uppercase tracking-wide">
-                    <GraduationCap className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#496c83]" />{" "}
+                  <h4 className="flex items-center gap-2 font-bold text-[#1f3a61] text-xs sm:text-sm mb-2">
+                    <GraduationCap className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-[#496c83]" />
                     Expertise
                   </h4>
                   <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
@@ -886,11 +876,11 @@ export default function HomePage() {
               <div className="flex items-center gap-3">
                 <img
                   src="/logo2.png"
-                  alt="EaseMed"
+                  alt="easemed"
                   className="h-12 w-12 object-contain opacity-80"
                 />
-                <span className="text-2xl sm:text-3xl font-black tracking-[-0.04em] text-[#1f3a61] uppercase">
-                  EaseMed
+                <span className="text-2xl sm:text-3xl font-black tracking-[-0.04em] text-[#1f3a61]">
+                  easemed
                 </span>
               </div>
               <div className="max-w-md">
@@ -899,13 +889,13 @@ export default function HomePage() {
                 </h3>
                 <p className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 text-[#496c83]">
                   Join health systems and supplier partners already using
-                  EaseMed to eliminate procurement friction.
+                  easemed to eliminate procurement friction.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   {user && profile ? (
                     <Link href={getDashboardUrl()}>
                       <button
-                        className="w-full sm:w-auto px-6 h-10 text-[11px] font-bold tracking-[0.15em] uppercase text-white bg-[#1f3a61] hover:bg-[#2e5080] transition-colors flex items-center gap-2"
+                        className="w-full sm:w-auto px-6 h-10 text-sm font-semibold text-white bg-[#1f3a61] hover:bg-[#2e5080] transition-colors flex items-center gap-2"
                         style={{ borderRadius: "1px" }}
                       >
                         Dashboard <ArrowRight className="h-3.5 w-3.5" />
@@ -914,17 +904,17 @@ export default function HomePage() {
                   ) : (
                     <button
                       onClick={() => setIsRequestModalOpen(true)}
-                      className="w-full sm:w-auto px-6 h-10 text-[11px] font-bold tracking-[0.15em] uppercase text-white bg-[#1f3a61] hover:bg-[#2e5080] transition-colors flex items-center gap-2"
+                      className="w-full sm:w-auto px-6 h-10 text-sm font-semibold text-white bg-[#1f3a61] hover:bg-[#2e5080] transition-colors flex items-center gap-2"
                       style={{ borderRadius: "1px" }}
                     >
-                      Get Network Access <ArrowRight className="h-3.5 w-3.5" />
+                      Get network access <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                   )}
                 </div>
               </div>
               <div className="pt-4 border-t border-[#e8edf5]">
                 <p className="text-xs sm:text-sm text-[#7999b9]">
-                  Copyright © 2026 EaseMed. All rights reserved.
+                  Copyright © 2026 easemed. All rights reserved.
                 </p>
               </div>
             </div>
@@ -942,8 +932,8 @@ export default function HomePage() {
                 {
                   title: "Legal",
                   links: [
-                    { href: "#", label: "Privacy Policy" },
-                    { href: "#", label: "Terms of Service" },
+                    { href: "#", label: "Privacy policy" },
+                    { href: "#", label: "Terms of service" },
                   ],
                 },
                 {
@@ -956,9 +946,7 @@ export default function HomePage() {
                 },
               ].map(({ title, links }) => (
                 <div key={title} className="space-y-3 sm:space-y-4">
-                  <h4 className="font-bold text-[#1f3a61] text-[10px] sm:text-xs uppercase tracking-widest">
-                    {title}
-                  </h4>
+                  <h4 className="font-bold text-[#1f3a61] text-xs">{title}</h4>
                   <nav className="flex flex-col gap-2 sm:gap-3 text-xs sm:text-sm font-medium">
                     {links.map(({ href, label }) => (
                       <Link
@@ -977,8 +965,8 @@ export default function HomePage() {
         </div>
 
         <div className="absolute bottom-[-5%] left-0 w-full text-center pointer-events-none select-none overflow-hidden">
-          <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-black text-[#edf1f8] uppercase tracking-tighter leading-none">
-            EASEMED
+          <h1 className="text-[14vw] sm:text-[12vw] md:text-[10vw] font-black text-[#edf1f8] tracking-tighter leading-none">
+            easemed
           </h1>
         </div>
       </footer>
