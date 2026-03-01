@@ -55,7 +55,7 @@ function LoadingSpinner({ progress }: { progress: number }) {
         </div>
         <div className="flex flex-col items-center gap-3">
           <p className="text-[10px] font-bold text-[#7999b9] uppercase tracking-[0.25em]">
-            Initializing Network
+            Loading Procurement Environment
           </p>
           <div className="flex gap-1 mt-1">
             {[0, 1, 2, 3].map((i) => (
@@ -333,19 +333,18 @@ export default function LogisticsScroll({
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-[#1f3a61] mb-4 tracking-tight leading-[0.95] uppercase">
-              Instant Global
+              Global Supplier
               <br />
-              Sourcing.
+              Access.
             </h2>
             <p className="text-sm md:text-base text-[#496c83] leading-relaxed">
-              Your request is broadcast to our verified network across Europe.
-              AI matches SKUs to available inventory in{" "}
-              <span className="font-bold text-[#1f3a61]">milliseconds</span>.
+              Structured requirements are routed to eligible suppliers. AI
+              assists in mapping product specifications to supplier submissions.
             </p>
             <div className="mt-6 pt-5 border-t border-[#e8edf5] flex flex-wrap gap-5">
               <div className="flex items-center gap-2 text-xs font-bold text-[#496c83] uppercase tracking-wide">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#496c83]" /> Stock
-                Found
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#496c83]" />{" "}
+                Responses Received
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-[#496c83] uppercase tracking-wide">
                 <CheckCircle2 className="h-3.5 w-3.5 text-[#496c83]" />{" "}
@@ -367,23 +366,22 @@ export default function LogisticsScroll({
             <div className="flex items-center justify-end gap-2 mb-6">
               <div className="h-1.5 w-1.5 rounded-full bg-[#1f3a61] animate-pulse" />
               <span className="text-[10px] font-bold text-[#1f3a61] uppercase tracking-[0.22em]">
-                In Transit
+                Review in Progress
               </span>
               <div className="h-[2px] w-8 bg-[#1f3a61]" />
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-[#1f3a61] mb-4 tracking-tight leading-[0.95] uppercase">
-              Automated Compliance
-              <br />& Logistics.
+              Compliance
+              <br />& Certifications.
             </h2>
             <p className="text-sm md:text-base text-[#496c83] leading-relaxed">
-              Waybills generated. Cargo space booked. Real-time tracking from
-              the warehouse floor to the hospital door.
+              Supplier submissions evaluated. Compliance confirmed. Internal
+              authorization underway.
             </p>
           </div>
         </motion.div>
 
-        {/* ── 85–100% Zero Friction Delivery — CENTERED CTA ── */}
         <motion.div
           style={{ opacity: opacity4, y: y4 }}
           className="absolute top-0 left-0 w-full h-full flex items-center justify-center pointer-events-auto z-20"
@@ -396,18 +394,16 @@ export default function LogisticsScroll({
             <div className="w-12 h-[3px] bg-[#1f3a61] mx-auto mb-8" />
 
             <p className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#7999b9] mb-4">
-              Healthcare Supply Infrastructure
+              Procurement Infrastructure for Healthcare
             </p>
 
             <h2 className="text-4xl md:text-5xl font-black text-[#1f3a61] mb-4 tracking-tight leading-[0.92] uppercase">
-              Zero Friction
+              Reduced operational complexity
               <br />
-              <span className="text-[#496c83]">Delivery.</span>
             </h2>
             <p className="text-base text-[#7999b9] mb-8 max-w-md mx-auto leading-relaxed">
-              This entire process happens without a single email or phone call.
-              This is what a modern procurement for a progressive infrastructure
-              looks like.
+              Requirements, submissions, and approvals progress within a unified
+              digital environment.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -434,7 +430,7 @@ export default function LogisticsScroll({
           <div className="flex items-center gap-3 mb-6">
             <div className="h-[2px] w-8 bg-[#1f3a61] opacity-40" />
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#7999b9]">
-              Healthcare Supply Infrastructure — AI-Native
+              Healthcare Procurement Platform
             </span>
           </div>
 
@@ -448,8 +444,9 @@ export default function LogisticsScroll({
           </h1>
 
           <p className="text-sm md:text-base text-[#7999b9] font-normal max-w-sm leading-relaxed mb-8">
-            AI-native procurement for health systems and supplier networks. From
-            requirement to delivery — without the friction.
+            The procurement infrastructure for healthcare organizations.
+            Enabling structured engagement between healthcare buyers and
+            suppliers.
           </p>
 
           <div className="flex flex-wrap gap-3 pointer-events-auto">
@@ -464,7 +461,7 @@ export default function LogisticsScroll({
             ) : (
               <>
                 <button
-                  className="h-11 px-8 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-[11px] font-bold tracking-[0.18em] uppercase transition-all hover:-translate-y-0.5 flex items-center gap-2"
+                  className="h-11 px-8 bg-[#1f3a61] hover:bg-[#2e5080] text-white text-[13px] font-bold tracking-[0.18em] transition-all hover:-translate-y-0.5 flex items-center gap-2"
                   style={{ borderRadius: "1px" }}
                   onClick={onRequestAccess}
                 >

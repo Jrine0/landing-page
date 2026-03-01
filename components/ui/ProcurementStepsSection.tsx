@@ -56,7 +56,7 @@ const STEPS = [
     visual: {
       headline: "Bid comparison ready",
       rows: [
-        { label: "Lowest Bid", value: "$0.38 / unit (Supplier A)" },
+        { label: "Lowest Priced Proposal", value: "$0.38 / unit (Supplier A)" },
         { label: "Compliance Score", value: "100% — All audited" },
         { label: "Approval Status", value: "CFO sign-off pending" },
         { label: "Audit Log", value: "16 events recorded" },

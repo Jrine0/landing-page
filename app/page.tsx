@@ -397,7 +397,7 @@ export default function HomePage() {
               iconBg: "bg-[#dbeeff]",
               iconColor: "text-[#1f3a61]",
               title: "Lightning fast",
-              body: "Reduce procurement cycles from days to minutes with AI automation",
+              body: "Accelerate procurement workflows with structured automation",
             },
             {
               top: "top-[200vh]",
@@ -405,7 +405,7 @@ export default function HomePage() {
               iconBg: "bg-[#d6eae0]",
               iconColor: "text-[#496c83]",
               title: "Verified network",
-              body: "Every supplier is rigorously vetted for quality and compliance",
+              body: "Suppliers undergo standardized verification processes",
             },
             {
               top: "top-[300vh]",
@@ -413,7 +413,7 @@ export default function HomePage() {
               iconBg: "bg-[#ffe5d8]",
               iconColor: "text-[#c4622a]",
               title: "Cost savings",
-              body: "Transparent bidding ensures optimal pricing and eliminates hidden costs",
+              body: "Structured proposal comparison supports transparent pricing evaluation",
             },
           ].map(({ top, Icon, iconBg, iconColor, title, body }) => (
             <div
@@ -585,8 +585,8 @@ export default function HomePage() {
                   Supplier partner portal
                 </h3>
                 <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed text-[#496c83]">
-                  Access verified demand signals, submit bids, and grow your
-                  business with intelligent forecasting.
+                  Access verified demand signals, structured proposals, and grow
+                  your business with intelligent forecasting.
                 </p>
                 <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {[
@@ -618,7 +618,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* ── UNBIASED PROCUREMENT ─── */}
+      {/* ── Democratic PROCUREMENT ─── */}
       <section
         id="intelligence"
         className="py-16 sm:py-24 lg:py-32 bg-[#edf1f8] border-t border-[#d4dce8] relative z-20"
@@ -626,11 +626,12 @@ export default function HomePage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-10 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading tracking-tight mb-3 sm:mb-4 px-4 text-[#1f3a61]">
-              Unbiased procurement
+              Democratic procurement
             </h2>
             <p className="text-base sm:text-lg max-w-2xl mx-auto px-4 text-[#496c83]">
-              The broken loop between demand and supply — manual hunting on one
-              side, unclear demand on the other. AI fixes both.
+              The gap between demand and supply — manual discovery and unclear
+              signals. Our platform introduces structured matching and
+              measurable alignment.
             </p>
           </div>
 
@@ -697,8 +698,8 @@ export default function HomePage() {
                       Intelligent capture
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#b2d6e0]">
-                      AI captures requirements, auto-matches to verified
-                      suppliers, and generates quotations instantly.
+                      AI assists with requirement capture, supporting supplier
+                      alignment and comparative proposal preparation.
                     </p>
                   </div>
                 </div>
@@ -767,8 +768,8 @@ export default function HomePage() {
                       Smart matching
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#cfe4ec]">
-                      AI-powered demand signals, automated bid preparation, and
-                      real-time opportunity alerts.
+                      AI-driven demand insights, structured proposal preparation
+                      support, and timely opportunity notifications.
                     </p>
                   </div>
                 </div>
@@ -836,7 +837,7 @@ export default function HomePage() {
                 <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed font-heading text-[#2d4f7a]">
                   Leading businesses across 4 continents. We are building
                   easemed to democratize global healthcare access through
-                  intelligent logistics.
+                  intelligent digital procurement systems.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10 border-t border-[#d4dce8] pt-6 sm:pt-8">
@@ -885,11 +886,11 @@ export default function HomePage() {
               </div>
               <div className="max-w-md">
                 <h3 className="text-lg sm:text-xl font-bold mb-2 text-[#1f3a61]">
-                  The operating layer for healthcare supply.
+                  The operating layer for healthcare procurement.
                 </h3>
                 <p className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 text-[#496c83]">
                   Join health systems and supplier partners already using
-                  easemed to eliminate procurement friction.
+                  EaseMed to improve procurement efficiency
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   {user && profile ? (
