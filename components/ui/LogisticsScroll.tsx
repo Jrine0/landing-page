@@ -10,13 +10,13 @@ import {
 import { CheckCircle2, ArrowRight } from "lucide-react";
 
 // --- Configuration ---
-const FRAME_COUNT = 181;
-const IMAGE_FOLDER = "/allrounderv4";
+const FRAME_COUNT = 208;
+const IMAGE_FOLDER = "/allrounderv5";
 const BG_COLOR = "#f4f7fb";
 
 function getFrameSrc(index: number): string {
-  const frameNum = (index + 12).toString().padStart(3, "0");
-  return `${IMAGE_FOLDER}/ezgif-frame-${frameNum}.jpg`;
+  const frameNum = (index + 1).toString().padStart(3, "0");
+  return `${IMAGE_FOLDER}/ezgif-frame-${frameNum}.png`;
 }
 
 // --- Loading Spinner ---
