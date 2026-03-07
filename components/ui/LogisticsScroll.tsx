@@ -327,28 +327,27 @@ export default function LogisticsScroll({
             <div className="flex items-center gap-2 mb-6">
               <div className="h-[2px] w-8 bg-[#496c83]" />
               <span className="text-[10px] font-bold text-[#496c83] uppercase tracking-[0.22em]">
-                Network Active
+                Future Insights
               </span>
               <div className="h-1.5 w-1.5 rounded-full bg-[#496c83] animate-pulse ml-1" />
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-[#1f3a61] mb-4 tracking-tight leading-[0.95] uppercase">
-              Global Supplier
-              <br />
-              Access.
+              Predict Supply Needs Before They Happen.
             </h2>
             <p className="text-sm md:text-base text-[#496c83] leading-relaxed">
-              Structured requirements are routed to eligible suppliers. AI
-              assists in mapping product specifications to supplier submissions.
+              AI analyzes procurement history, seasonal demand patterns, and
+              global supply signals to forecast future medical supply needs —
+              helping hospitals prepare before shortages occur.
             </p>
             <div className="mt-6 pt-5 border-t border-[#e8edf5] flex flex-wrap gap-5">
               <div className="flex items-center gap-2 text-xs font-bold text-[#496c83] uppercase tracking-wide">
-                <CheckCircle2 className="h-3.5 w-3.5 text-[#496c83]" />{" "}
-                Responses Received
+                <CheckCircle2 className="h-3.5 w-3.5 text-[#496c83]" /> Demand
+                Forecast Ready
               </div>
               <div className="flex items-center gap-2 text-xs font-bold text-[#496c83] uppercase tracking-wide">
                 <CheckCircle2 className="h-3.5 w-3.5 text-[#496c83]" />{" "}
-                Compliance Verified
+                Procurement Signals Detected
               </div>
             </div>
           </div>
@@ -366,18 +365,18 @@ export default function LogisticsScroll({
             <div className="flex items-center justify-end gap-2 mb-6">
               <div className="h-1.5 w-1.5 rounded-full bg-[#1f3a61] animate-pulse" />
               <span className="text-[10px] font-bold text-[#1f3a61] uppercase tracking-[0.22em]">
-                Review in Progress
+                Network Active
               </span>
               <div className="h-[2px] w-8 bg-[#1f3a61]" />
             </div>
 
             <h2 className="text-3xl md:text-4xl font-black text-[#1f3a61] mb-4 tracking-tight leading-[0.95] uppercase">
-              Compliance
-              <br />& Certifications.
+              Global Procurement Access.
             </h2>
             <p className="text-sm md:text-base text-[#496c83] leading-relaxed">
-              Supplier submissions evaluated. Compliance confirmed. Internal
-              authorization underway.
+              Structured procurement requests are routed to verified medical
+              suppliers across the network. AI maps product specifications to
+              supplier capabilities and responses.
             </p>
           </div>
         </motion.div>
@@ -430,23 +429,22 @@ export default function LogisticsScroll({
           <div className="flex items-center gap-3 mb-6">
             <div className="h-[2px] w-8 bg-[#1f3a61] opacity-40" />
             <span className="text-[10px] font-bold tracking-[0.25em] uppercase text-[#7999b9]">
-              Healthcare Procurement Platform
+              Healthcare Procurement. Simplified.
             </span>
           </div>
 
           {/* Headline — declarative, category-defining */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-[-0.03em] text-[#1f3a61] leading-[0.90] mb-6 uppercase">
-            The Network
+            Where Healthcare
             <br />
-            That Moves
+            Demand Meets
             <br />
-            <span className="text-[#496c83]">Medical Supply.</span>
+            <span className="text-[#496c83]">Global Supply.</span>
           </h1>
 
           <p className="text-sm md:text-base text-[#7999b9] font-normal max-w-sm leading-relaxed mb-8">
-            The procurement infrastructure for healthcare organizations.
-            Enabling structured engagement between healthcare buyers and
-            suppliers.
+            Requirement capture, supplier matching, compliance verification, and
+            approvals — all managed within a single procurement environment.
           </p>
 
           <div className="flex flex-wrap gap-3 pointer-events-auto">
