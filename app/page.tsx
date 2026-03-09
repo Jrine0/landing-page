@@ -75,14 +75,12 @@ const RequestAccessModal = ({
             style={{ borderRadius: "2px" }}
           >
             <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#1f3a61]" />
-
             <button
               onClick={onClose}
               className="absolute top-5 right-5 text-[#7999b9] hover:text-[#1f3a61] transition-colors"
             >
               <X className="h-4 w-4" />
             </button>
-
             <div className="mb-6">
               <p className="text-[10px] font-bold tracking-wide text-[#7999b9] mb-2">
                 Enterprise access
@@ -91,7 +89,6 @@ const RequestAccessModal = ({
                 Apply for network access
               </h1>
             </div>
-
             <div className="flex gap-0 mb-6 border border-[#d4dce8]">
               {["hospital", "vendor"].map((r) => (
                 <button
@@ -108,7 +105,6 @@ const RequestAccessModal = ({
                 </button>
               ))}
             </div>
-
             <form onSubmit={handleSubmit} className="flex flex-col gap-3">
               <input
                 placeholder="Organization name"
@@ -138,7 +134,6 @@ const RequestAccessModal = ({
                 )}
               </button>
             </form>
-
             <p className="text-[10px] text-[#7999b9] mt-4 leading-relaxed">
               Applications are reviewed within 2 business days. Enterprise
               compliance documentation will be required.
@@ -183,7 +178,6 @@ const MobileMenu = ({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="h-[3px] bg-[#1f3a61] w-full" />
-
             <div className="p-8">
               <div className="flex items-center justify-between mb-10">
                 <span className="text-base font-black tracking-[-0.04em] text-[#1f3a61]">
@@ -196,7 +190,6 @@ const MobileMenu = ({
                   <X className="h-5 w-5" />
                 </button>
               </div>
-
               <nav className="flex flex-col gap-1 mb-10">
                 {[
                   { href: "#platform", label: "Platform" },
@@ -213,7 +206,6 @@ const MobileMenu = ({
                   </Link>
                 ))}
               </nav>
-
               <div className="flex flex-col gap-3">
                 {user ? (
                   <button
@@ -298,7 +290,7 @@ export default function HomePage() {
         }}
       />
 
-      {/* ── NAVBAR ─── */}
+      {/* ── NAVBAR ── */}
       <header
         className="fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300"
         style={{
@@ -363,7 +355,6 @@ export default function HomePage() {
                 <ArrowRight className="h-3 w-3" />
               </button>
             )}
-
             <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="lg:hidden text-[#496c83] hover:text-[#1f3a61] transition-colors"
@@ -374,8 +365,13 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── HERO ─── */}
-      <div className="relative pt-16">
+      {/* ── HERO ──
+          Desktop: relative pt-16 wrapper needed so the 400vh scroll container
+                   starts below the navbar.
+          Mobile:  LogisticsScroll handles pt-16 internally — no wrapper offset needed.
+                   We use a plain div with no padding so there's no double offset.
+      ── */}
+      <div className="relative pt-16 lg:pt-0">
         <LogisticsScroll
           onRequestAccess={() => setIsRequestModalOpen(true)}
           isLoggedIn={!!user}
@@ -388,68 +384,7 @@ export default function HomePage() {
           }}
         />
 
-        {/* Mobile info cards */}
-        <div className="lg:hidden">
-          {[
-            {
-              top: "top-[100vh]",
-              Icon: Zap,
-              iconBg: "bg-[#dbeeff]",
-              iconColor: "text-[#1f3a61]",
-              title: "Lightning fast",
-              body: "Accelerate procurement workflows with structured automation",
-            },
-            {
-              top: "top-[200vh]",
-              Icon: Shield,
-              iconBg: "bg-[#d6eae0]",
-              iconColor: "text-[#496c83]",
-              title: "Verified network",
-              body: "Suppliers undergo standardized verification processes",
-            },
-            {
-              top: "top-[300vh]",
-              Icon: TrendingUp,
-              iconBg: "bg-[#ffe5d8]",
-              iconColor: "text-[#c4622a]",
-              title: "Cost savings",
-              body: "Structured proposal comparison supports transparent pricing evaluation",
-            },
-          ].map(({ top, Icon, iconBg, iconColor, title, body }) => (
-            <div
-              key={title}
-              className={`absolute ${top} left-0 right-0 px-4 z-30 pointer-events-none`}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="bg-white/95 backdrop-blur-sm p-6 shadow-xl border border-[#d4dce8] max-w-md mx-auto pointer-events-auto"
-                style={{ borderRadius: "2px" }}
-              >
-                <div className="flex items-start gap-4">
-                  <div
-                    className={cn(
-                      "w-10 h-10 flex items-center justify-center shrink-0",
-                      iconBg,
-                    )}
-                    style={{ borderRadius: "1px" }}
-                  >
-                    <Icon className={cn("h-5 w-5", iconColor)} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold mb-1 text-[#1f3a61] text-sm">
-                      {title}
-                    </h3>
-                    <p className="text-sm text-[#496c83]">{body}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          ))}
-        </div>
-
-        {/* Desktop verification card */}
+        {/* Desktop-only verification card — sits inside the 400vh scroll zone */}
         <div className="hidden lg:block">
           <div className="absolute top-[200vh] left-8 z-30 pointer-events-none">
             <motion.div
@@ -499,7 +434,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── CHOOSE YOUR PATH ─── */}
+      {/* ── CHOOSE YOUR PATH ── */}
       {!user && (
         <section
           id="access"
@@ -538,8 +473,9 @@ export default function HomePage() {
                   Hospital procurement portal
                 </h3>
                 <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed text-[#496c83]">
-                  Optimize procurement, reduce costs, and ensure compliance
-                  across your entire supply chain.
+                  Manage procurement requests, discover verified suppliers, and
+                  ensure regulatory compliance across your healthcare supply
+                  chain.
                 </p>
                 <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {[
@@ -585,8 +521,9 @@ export default function HomePage() {
                   Supplier partner portal
                 </h3>
                 <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed text-[#496c83]">
-                  Access verified demand signals, structured proposals, and grow
-                  your business with intelligent forecasting.
+                  Access verified procurement demand from hospitals and
+                  healthcare organizations. Respond to structured procurement
+                  requests and grow your distribution network.
                 </p>
                 <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {[
@@ -618,7 +555,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* ── Democratic PROCUREMENT ─── */}
+      {/* ── DEMOCRATIC PROCUREMENT ── */}
       <section
         id="intelligence"
         className="py-16 sm:py-24 lg:py-32 bg-[#edf1f8] border-t border-[#d4dce8] relative z-20"
@@ -641,7 +578,6 @@ export default function HomePage() {
               <h3 className="text-xs font-semibold text-[#7999b9] mb-2">
                 The hospital struggle
               </h3>
-
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#f0f4fa] border-[#d8e0ec]"
                 style={{ borderRadius: "2px" }}
@@ -659,7 +595,7 @@ export default function HomePage() {
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
                       Hospitals waste hours searching for suppliers across
-                      fragmented channels.
+                      disconnected channels.
                     </p>
                   </div>
                 </div>
@@ -675,13 +611,12 @@ export default function HomePage() {
                       Slow purchase cycles
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
-                      Traditional procurement stretches days into weeks with
-                      endless back-and-forth.
+                      Procurement cycles stretch into weeks due to fragmented
+                      communication and manual evaluation.
                     </p>
                   </div>
                 </div>
               </div>
-
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#1f3a61] border-[#2e5080] shadow-[0_4px_20px_rgba(31,58,97,0.20)]"
                 style={{ borderRadius: "2px" }}
@@ -698,8 +633,9 @@ export default function HomePage() {
                       Intelligent capture
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#b2d6e0]">
-                      AI assists with requirement capture, supporting supplier
-                      alignment and comparative proposal preparation.
+                      AI captures requirements from documents, clinical
+                      specifications, or natural language — removing ambiguity
+                      and manual entry.
                     </p>
                   </div>
                 </div>
@@ -711,7 +647,6 @@ export default function HomePage() {
               <h3 className="text-xs font-semibold text-[#7999b9] mb-2">
                 The supplier struggle
               </h3>
-
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#f0f4fa] border-[#d8e0ec]"
                 style={{ borderRadius: "2px" }}
@@ -728,8 +663,8 @@ export default function HomePage() {
                       Unclear demand
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
-                      Suppliers struggle to identify real demand signals across
-                      fragmented hospital networks.
+                      Suppliers struggle to identify real procurement demand
+                      across fragmented hospital networks.
                     </p>
                   </div>
                 </div>
@@ -745,13 +680,12 @@ export default function HomePage() {
                       Time-consuming quotations
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#496c83]">
-                      Manual quoting processes drain resources and lead to
-                      missed opportunities.
+                      Preparing quotations manually consumes time and often
+                      results in missed opportunities.
                     </p>
                   </div>
                 </div>
               </div>
-
               <div
                 className="p-4 sm:p-6 border transition-all bg-[#1f3a61] border-[#5a7d96] shadow-[0_4px_20px_rgba(73,108,131,0.22)]"
                 style={{ borderRadius: "2px" }}
@@ -768,8 +702,8 @@ export default function HomePage() {
                       Smart matching
                     </h4>
                     <p className="text-xs sm:text-sm leading-relaxed text-[#cfe4ec]">
-                      AI-driven demand insights, structured proposal preparation
-                      support, and timely opportunity notifications.
+                      AI connects suppliers with verified demand, structured
+                      requirements, and timely procurement opportunities.
                     </p>
                   </div>
                 </div>
@@ -778,9 +712,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       <ProcurementStepsSection />
 
-      {/* ── LEADERSHIP ─── */}
+      {/* ── LEADERSHIP ── */}
       <section
         id="aboutus"
         className="py-16 sm:py-24 lg:py-32 bg-[#e8edf5] border-t border-[#d4dce8] z-20 relative"
@@ -799,7 +734,6 @@ export default function HomePage() {
                   style={{ borderRadius: "1px" }}
                 />
               </div>
-
               <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 sm:-bottom-7 z-10">
                 <a
                   href="https://www.linkedin.com/in/nikita-akolikar"
@@ -835,9 +769,9 @@ export default function HomePage() {
                   "I see opportunities others miss"
                 </p>
                 <p className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed font-heading text-[#2d4f7a]">
-                  Leading businesses across 4 continents. We are building
-                  easemed to democratize global healthcare access through
-                  intelligent digital procurement systems.
+                  Leading cross-border sourcing operations across four
+                  continents, building the digital infrastructure for modern
+                  healthcare procurement.
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-10 border-t border-[#d4dce8] pt-6 sm:pt-8">
@@ -867,10 +801,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FOOTER ─── */}
+      {/* ── FOOTER ── */}
       <footer className="relative bg-white pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-12 overflow-hidden border-t border-[#d4dce8] z-20">
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#1f3a61]" />
-
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 mb-12 sm:mb-16 lg:mb-20">
             <div className="space-y-6 sm:space-y-8">
@@ -889,8 +822,10 @@ export default function HomePage() {
                   The operating layer for healthcare procurement.
                 </h3>
                 <p className="text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 text-[#496c83]">
-                  Join health systems and supplier partners already using
-                  EaseMed to improve procurement efficiency
+                  EaseMed connects hospitals, suppliers, and procurement teams
+                  through a unified intelligence platform. Reducing complexity,
+                  improving supply reliability, and accelerating procurement
+                  decisions.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   {user && profile ? (
